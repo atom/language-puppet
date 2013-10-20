@@ -1,0 +1,8 @@
+{
+  "name": "SymbolList (resource)",
+  "scope": "source.puppet meta.definition.resource.puppet",
+  "settings": {
+    "showInSymbolList": 1,
+    "symbolTransformation": "s/^\\s*(\\w+)\\s*{\\s*['\"](.*)['\"]:/  \\u$1[\"$2\"]/"
+  }
+}

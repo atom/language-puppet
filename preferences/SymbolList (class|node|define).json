@@ -1,0 +1,7 @@
+{
+  "name": "SymbolList (class|node|define)",
+  "scope": "source.puppet entity.name.function entity.name.type",
+  "settings": {
+    "showInSymbolList": 1
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "content": "package { \"${1:name}\":\n\tensure => ${2:installed},\n}$0",
+  "name": "package",
+  "scope": "source.puppet",
+  "tabTrigger": "package"
+}

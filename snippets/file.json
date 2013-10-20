@@ -1,0 +1,6 @@
+{
+  "content": "file { \"${1:name}\":\n\tensure => ${2:file},\n}$0",
+  "name": "file",
+  "scope": "source.puppet",
+  "tabTrigger": "file"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "language-puppet",
+  "version": "0.0.0",
+  "engines": {
+    "atom": "*",
+    "node": "*"
+  },
+  "description": "Puppet language support in Atom",
+  "homepage": "http://atom.github.io/language-puppet",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atom/language-puppet.git"
+  },
+  "bugs": {
+    "url": "https://github.com/atom/language-puppet/issues"
+  }
+}

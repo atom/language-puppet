@@ -1,0 +1,6 @@
+{
+  "content": "cron { \"${1:name}\":\n\t$2\n}$0",
+  "name": "cron",
+  "scope": "source.puppet",
+  "tabTrigger": "cron"
+}

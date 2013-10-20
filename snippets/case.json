@@ -1,0 +1,6 @@
+{
+  "content": "case \\$${1:variable} {\n\t\"${2:value}\": {\n\t\t${3:# code}\n\t}\n\tdefault: {\n\t\t${4:# code}\n\t}\n}$0",
+  "name": "case",
+  "scope": "source.puppet",
+  "tabTrigger": "case"
+}
