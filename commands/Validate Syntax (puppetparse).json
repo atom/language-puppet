@@ -1,9 +1,0 @@
-{
-  "beforeRunningCommand": "saveActiveFile",
-  "command": "#!/usr/bin/env ruby\nrequire ENV['TM_SUPPORT_PATH'] + '/lib/textmate'\nputs \"<p>Running syntax check &hellip;</p>\\n\"\nresult = `puppet parser validate --color=false --confdir=/tmp/puppet --vardir=/tmp/puppet $TM_FILEPATH`\nputs \"<pre>\"\nputs result\nputs \"</pre>\"\nputs \"<p>Check complete.</p>\\n\"\nTextMate.go_to :line => $1 if result =~ /:(\\d+)$/",
-  "input": "none",
-  "keyEquivalent": "^V",
-  "name": "Validate Syntax (puppetparse)",
-  "output": "showAsHTML",
-  "scope": "source.puppet"
-}

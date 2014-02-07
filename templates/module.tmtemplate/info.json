@@ -1,4 +1,0 @@
-{
-  "command": "if [[ ! -d \"$TM_NEW_FILE\" ]]; then\n   mkdir -p \"$TM_NEW_FILE/manifests\"\n   mkdir -p \"$TM_NEW_FILE/files\"\n   mkdir -p \"$TM_NEW_FILE/templates\"\n   TM_YEAR=`date +%Y` \\\n   TM_DATE=`date +%Y-%m-%d` \\\n   TM_USERNAME=`niutil -readprop / /users/\\$USER realname` \\\n   perl -pe 's/\\$\\{([^}]*)\\}/$ENV{$1}/g' \\\n      < init.pp > \"$TM_NEW_FILE/manifests/init.pp\"\nfi\n",
-  "name": "module"
-}
