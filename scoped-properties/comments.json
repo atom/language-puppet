@@ -1,5 +1,5 @@
 {
-  "source.puppet": {
+  ".source.puppet": {
     "editor": {
       "commentStart": "# "
     }
