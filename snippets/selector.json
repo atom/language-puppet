@@ -1,6 +1,0 @@
-{
-  "content": "\\$${1:variable} ? {\n\t\"${2:key}\" => \"${3:value}\",\n\tdefault => \"${4:value}\",\n}$0",
-  "name": "selector",
-  "scope": "source.puppet",
-  "tabTrigger": "?"
-}

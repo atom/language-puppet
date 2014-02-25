@@ -1,6 +1,0 @@
-{
-  "content": "yumrepo { \"${1:name}\":\n\tbaseurl => \"${2}\",\n\tdescr => \"${3:The $1 repository}\",\n\tenabled => \"${4:1}\",\n\tgpgcheck => \"${5:1}\",\n\tgpgkey => \"${6:file:///etc/pki/rpm-gpg/RPM-GPG-KEY-$1}\",\n\tmirrorlist => \"${7}\"\n}$0",
-  "name": "yumrepo",
-  "scope": "source.puppet",
-  "tabTrigger": "yumrepo"
-}

@@ -1,6 +1,0 @@
-{
-  "content": "# Define: $1\n# Parameters:\n# $2\n#\ndefine ${1:name} (${2:arguments}) {\n\t${3:# puppet code}\n}$0",
-  "name": "define",
-  "scope": "source.puppet",
-  "tabTrigger": "define"
-}

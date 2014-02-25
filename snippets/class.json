@@ -1,6 +1,0 @@
-{
-  "content": "# Class: $1\n#\n#\nclass ${1:name} {\n\t${2:# resources}\n}$0",
-  "name": "class",
-  "scope": "source.puppet",
-  "tabTrigger": "class"
-}

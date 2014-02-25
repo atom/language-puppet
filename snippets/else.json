@@ -1,6 +1,0 @@
-{
-  "content": "else {\n\t${1:# enter puppet code}\n}$0",
-  "name": "else",
-  "scope": "source.puppet",
-  "tabTrigger": "else"
-}

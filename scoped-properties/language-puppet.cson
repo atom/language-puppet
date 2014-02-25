@@ -1,0 +1,21 @@
+'.source.puppet':
+  'editor':
+    'commentStart': '# '
+    'completions': [
+      'name'
+      'provider'
+      'ensure'
+      'enable'
+      'command'
+      'path'
+      'owner'
+      'group'
+      'refresh'
+      'refreshonly'
+      'unless'
+      'backup'
+      'content'
+      'source'
+      'mode'
+      'recurse'
+    ]

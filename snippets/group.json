@@ -1,6 +1,0 @@
-{
-  "content": "group { \"${1:name}\":\n\tgid => $2,\n}$0",
-  "name": "group",
-  "scope": "source.puppet",
-  "tabTrigger": "group"
-}

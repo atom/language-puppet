@@ -1,0 +1,43 @@
+'.source.puppet':
+  'Parameter':
+    'prefix': '='
+    'body': '${1:name} => "${2:value}",$0'
+  'case':
+    'prefix': 'case'
+    'body': 'case \\$${1:variable} {\n\t"${2:value}": {\n\t\t${3:# code}\n\t}\n\tdefault: {\n\t\t${4:# code}\n\t}\n}$0'
+  'class':
+    'prefix': 'class'
+    'body': '# Class: $1\n#\n#\nclass ${1:name} {\n\t${2:# resources}\n}$0'
+  'cron':
+    'prefix': 'cron'
+    'body': 'cron { "${1:name}":\n\t$2\n}$0'
+  'define':
+    'prefix': 'define'
+    'body': '# Define: $1\n# Parameters:\n# $2\n#\ndefine ${1:name} (${2:arguments}) {\n\t${3:# puppet code}\n}$0'
+  'else':
+    'prefix': 'else'
+    'body': 'else {\n\t${1:# enter puppet code}\n}$0'
+  'exec':
+    'prefix': 'exec'
+    'body': 'exec { "${1:name}":\n\tcommand => "${2:/bin/echo}",\n\t#path => "/usr/bin:/usr/sbin:/bin:/usr/local/bin",\n\t#refreshonly => true,\n}$0'
+  'file':
+    'prefix': 'file'
+    'body': 'file { "${1:name}":\n\tensure => ${2:file},\n}$0'
+  'group':
+    'prefix': 'group'
+    'body': 'group { "${1:name}":\n\tgid => $2,\n}$0'
+  'if':
+    'prefix': 'if'
+    'body': 'if ${1:test} {\n\t${2:# enter puppet code}\n}$0'
+  'package':
+    'prefix': 'package'
+    'body': 'package { "${1:name}":\n\tensure => ${2:installed},\n}$0'
+  'selector':
+    'prefix': '?'
+    'body': '\\$${1:variable} ? {\n\t"${2:key}" => "${3:value}",\n\tdefault => "${4:value}",\n}$0'
+  'user':
+    'prefix': 'user'
+    'body': 'user { "${1:name}":\n\tcomment => "${2:First Last}",\n\thome => "${3:/home/$1}",\n\tensure => ${4:present},\n\t#shell => "/bin/bash",\n\t#uid => \'501\',\n\t#gid => \'20\'\n}$0'
+  'yumrepo':
+    'prefix': 'yumrepo'
+    'body': 'yumrepo { "${1:name}":\n\tbaseurl => "${2}",\n\tdescr => "${3:The $1 repository}",\n\tenabled => "${4:1}",\n\tgpgcheck => "${5:1}",\n\tgpgkey => "${6:file:///etc/pki/rpm-gpg/RPM-GPG-KEY-$1}",\n\tmirrorlist => "${7}"\n}$0'

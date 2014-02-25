@@ -1,6 +1,0 @@
-{
-  "content": "if ${1:test} {\n\t${2:# enter puppet code}\n}$0",
-  "name": "if",
-  "scope": "source.puppet",
-  "tabTrigger": "if"
-}

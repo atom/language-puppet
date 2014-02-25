@@ -1,6 +1,0 @@
-{
-  "content": "exec { \"${1:name}\":\n\tcommand => \"${2:/bin/echo}\",\n\t#path => \"/usr/bin:/usr/sbin:/bin:/usr/local/bin\",\n\t#refreshonly => true,\n}$0",
-  "name": "exec",
-  "scope": "source.puppet",
-  "tabTrigger": "exec"
-}

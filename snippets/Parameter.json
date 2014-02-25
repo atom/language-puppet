@@ -1,6 +1,0 @@
-{
-  "content": "${1:name} => \"${2:value}\",$0",
-  "name": "Parameter",
-  "scope": "source.puppet",
-  "tabTrigger": "="
-}
