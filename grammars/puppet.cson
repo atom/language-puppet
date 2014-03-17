@@ -20,7 +20,7 @@
         'name': 'storage.type.puppet'
       '2':
         'name': 'entity.name.type.class.puppet'
-    'end': '(?={)'
+    'end': '(?=)'
     'name': 'meta.definition.class.puppet'
     'patterns': [
       {
