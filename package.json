@@ -1,6 +1,6 @@
 {
   "name": "language-puppet",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "engines": {
     "atom": "*",
     "node": "*"
