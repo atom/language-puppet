@@ -93,7 +93,7 @@
     'name': 'meta.definition.resource.puppet'
   }
   {
-    'match': '\\b(case|if|else)(?!::)'
+    'match': '\\b(case|if|else)(?!::)\\b'
     'name': 'keyword.control.puppet'
   }
   {
