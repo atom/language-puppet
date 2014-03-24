@@ -7,6 +7,8 @@
 'patterns': [
   {
     'include': '#line_comment'
+  }
+  {
     'include': '#constants'
   }
   {
