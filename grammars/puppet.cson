@@ -7,6 +7,7 @@
 'patterns': [
   {
     'include': '#line_comment'
+    'include': '#constants'
   }
   {
     'begin': '^\\s*/\\*'
@@ -126,14 +127,15 @@
     'match': '(?i)\\b(package|escape|gsub|alert|crit|debug|notice|defined|emerg|err|fail|failed|file|generate|include|info|realize|search|tag|tagged|template|warning)\\b'
     'name': 'support.function.puppet'
   }
-  {
-    'match': '(?i)\\b(false|true|stopped|running|present|absent|file|directory)\\b'
-    'name': 'constant.language.puppet'
-  }
 ]
 'repository':
   'constants':
-    'patterns': []
+    'patterns': [
+      {
+        'match': '(?i)\\b(false|true|stopped|running|present|absent|file|directory)\\b'
+        'name': 'constant.language.puppet'
+      }
+    ]
   'double-quoted-string':
     'begin': '"'
     'beginCaptures':
