@@ -1,3 +1,4 @@
+'scopeName': 'source.puppet'
 'fileTypes': [
   'pp'
 ]
@@ -349,4 +350,3 @@
         'name': 'variable.other.readwrite.global.puppet'
       }
     ]
-'scopeName': 'source.puppet'
