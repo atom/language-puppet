@@ -18,7 +18,7 @@
     'name': 'comment.block.puppet'
   }
   {
-    'begin': '(?x)^\\s*\n\t\t\t\t\t(node|class)\\s+\n\t\t\t\t\t((?:[-_A-Za-z0-9".]+::)*[-_A-Za-z0-9".]+)\\s* # identifier'
+    'begin': '^\\s*(node|class)\\s+((?:[-_A-Za-z0-9".]+::)*[-_A-Za-z0-9".]+)\\s*'
     'captures':
       '1':
         'name': 'storage.type.puppet'
