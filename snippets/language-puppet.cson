@@ -26,6 +26,9 @@
   'group':
     'prefix': 'group'
     'body': 'group { \'${1:name}\':\n\tgid => ${2:1},\n}$0'
+  'host':
+    'prefix': 'host'
+    'body': 'host { \'${1:name}\':\n\tensure => \'${2:present}\',\n\tname => \'${1:name}\',\n\tip => \'${3:address}\',\n}$0'
   'if':
     'prefix': 'if'
     'body': 'if ${1:test} {\n\t${2:# enter puppet code}\n}$0'
