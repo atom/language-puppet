@@ -158,7 +158,7 @@
   }
   {
     'match': '=>'
-    'name': 'punctuation.separator.key-value'
+    'name': 'punctuation.separator.key-value.puppet'
   }
 ]
 'repository':
