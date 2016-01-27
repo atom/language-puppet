@@ -156,6 +156,10 @@
     'match': '(?i)\\b(alert|contain|crit|debug|defined|emerg|err|escape|fail|failed|file|generate|gsub|include|info|notice|package|realize|search|tag|tagged|template|warning)\\b'
     'name': 'support.function.puppet'
   }
+  {
+    'match': '=>'
+    'name': 'punctuation.separator.key-value.puppet'
+  }
 ]
 'repository':
   'constants':
