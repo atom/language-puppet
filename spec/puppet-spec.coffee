@@ -18,12 +18,12 @@ describe "Puppet grammar", ->
       expect(tokens[1]).toEqual value: '=>', scopes: ['source.puppet', 'punctuation.separator.key-value.puppet']
 
     it "tokenizes attribute separator with string values", ->
-      {tokens} = grammar.tokenizeLine('ensure => \"present\"')
+      {tokens} = grammar.tokenizeLine('ensure => "present"')
       expect(tokens[1]).toEqual value: '=>', scopes: ['source.puppet', 'punctuation.separator.key-value.puppet']
 
   describe "blocks", ->
     it "tokenizes single quoted node", ->
-      {tokens} = grammar.tokenizeLine('node \'hostname\' {')
+      {tokens} = grammar.tokenizeLine("node 'hostname' {")
       expect(tokens[0]).toEqual value: 'node', scopes: ['source.puppet', 'meta.definition.class.puppet', 'storage.type.puppet']
 
     it "tokenizes double quoted node", ->
