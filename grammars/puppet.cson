@@ -170,28 +170,27 @@
     'name': 'meta.include.puppet'
   }
   {
-    'match': '\\b\\w+\\s*(?==>)\\s*'
-    'name': 'constant.other.key.puppet'
-  }
-  {
     'match': '(?<={)\\s*\\w+\\s*(?=})'
     'name': 'constant.other.bareword.puppet'
   }
   {
-    'match': '(?i)\\b(alert|contain|crit|debug|defined|emerg|err|escape|fail|failed|file|generate|gsub|include|info|notice|package|realize|search|tag|tagged|template|warning)\\b'
-    'name': 'support.function.puppet'
-  }
-  {
-    'match': '=>'
-    'name': 'punctuation.separator.key-value.puppet'
+    'include': '#functions'
   }
 ]
 'repository':
-  'constants':
+  'functions':
+    'beginCaptures':
+      '0':
+        'name': 'support.function.puppet'
+    'endCaptures':
+      '0':
+        'name': 'support.function.puppet'
+    'begin': '(?:^|\\s|\\W)(\\w+)\\s*\\('
+    'end': '\\)'
+    'name': 'meta.function.puppet'
     'patterns': [
       {
-        'match': '(?i)\\b(absent|directory|false|file|present|running|stopped|true)\\b'
-        'name': 'constant.language.puppet'
+        'include': '#parameter-default-types'
       }
     ]
   'double-quoted-string':
@@ -345,14 +344,7 @@
         'include': '#array'
       }
       {
-        'begin': '([a-zA-Z_][a-zA-Z0-9_]*)(\\()'
-        'end': '(\\))'
-        'name': 'meta.function.puppet'
-        'patterns': [
-          {
-            'include': '#parameter-default-types'
-          }
-        ]
+        'include': "#functions"
       }
       {
         'include': '#constants'
