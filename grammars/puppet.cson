@@ -114,13 +114,36 @@
     ]
   }
   {
-    'captures':
+    'beginCaptures':
       '1':
         'name': 'storage.type.puppet'
-      '2':
-        'name': 'entity.name.section.puppet'
-    'match': '^\\s*(\\w+)\\s*{\\s*([\'"].+[\'"]):'
+    'begin': '(\\w+(?::{2}\\w+)*)\\s*{'
     'name': 'meta.definition.resource.puppet'
+    'end': '}'
+    'patterns': [
+      {
+        'include': '#strings'
+      }
+      {
+        'include': '#variables'
+      }
+      {
+        'include': '#metaparameters'
+      }
+      {
+        'beginCaptures':
+          '1':
+            'name': 'name.parameter.resource.puppet'
+        'begin': '(?:^|\\W)(\\w+)\\s*=>'
+        'name': 'meta.parameter.resource.puppet'
+        'end': '(,|\\n|;)'
+        'patterns': [
+          {
+            'include': '#parameter-default-types'
+          }
+        ]
+      }
+    ]
   }
   {
     'match': '\\b(case|if|else|elsif)(?!::)\\b'
