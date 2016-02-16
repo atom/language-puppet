@@ -156,7 +156,7 @@
     'name': 'entity.name.section.puppet'
   }
   {
-    'include': '#variable'
+    'include': '#variables'
   }
   {
     'begin': '(?i)\\b(import|include)\\b\\s*'
@@ -206,7 +206,7 @@
         'include': '#escaped_char'
       }
       {
-        'include': '#variable'
+        'include': '#variables'
       }
     ]
   'escaped_char':
@@ -256,7 +256,7 @@
         'include': '#escaped_char'
       }
       {
-        'include': '#variable'
+        'include': '#variables'
       }
       {
         'include': '#nested_braces_interpolated'
@@ -287,7 +287,7 @@
         'include': '#escaped_char'
       }
       {
-        'include': '#variable'
+        'include': '#variables'
       }
       {
         'include': '#nested_brackets_interpolated'
@@ -318,7 +318,7 @@
         'include': '#escaped_char'
       }
       {
-        'include': '#variable'
+        'include': '#variables'
       }
       {
         'include': '#nested_parens_interpolated'
@@ -417,7 +417,7 @@
         'include': '#single-quoted-string'
       }
     ]
-  'variable':
+  'variables':
     'patterns': [
       {
         'captures':
