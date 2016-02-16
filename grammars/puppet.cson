@@ -440,6 +440,32 @@
         'include': '#cases'
       }
     ]
+  'comparisons':
+    'beginCaptures':
+      '2':
+        'name': 'keyword.control.puppet'
+    'begin': '(^|\\s)\\s*(if|else|unless|elsif)\\s+'
+    'end': '{'
+    'patterns': [
+      {
+        'include': '#parameter-default-types'
+      }
+      {
+        'include': '#comparisonoperators'
+      }
+      {
+        'include': '#negationoperators'
+      }
+    ]
+  'comparisonoperators':
+    'match': '(?:\\s|^)(={2}|!=|>|<|>=|<=|=~|!~|in)(?:\\s|^)'
+    'name': 'keyword.control.puppet'
+  'negationoperators':
+    'captures':
+      '1':
+        'name': 'negation.keyword.control.puppet'
+    'match': '(?:\\s|^)(not|!)(?:\\s|^)'
+    'name': 'meta.keyword.control.puppet'
   'numbers':
     'captures':
       '1':
