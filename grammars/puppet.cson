@@ -21,7 +21,7 @@
     'name': 'comment.block.puppet'
   }
   {
-    'begin': '^\\s*(node|class)\\s+((?:[-_A-Za-z0-9"\'.]+::)*[-_A-Za-z0-9"\'.]+)\\s*'
+    'begin': '^\\s*(node|class|application)\\s+((?:[-_A-Za-z0-9"\'.]+::)*[-_A-Za-z0-9"\'.]+)\\s*'
     'captures':
       '1':
         'name': 'storage.type.puppet'
