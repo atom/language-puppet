@@ -7,6 +7,9 @@
 'name': 'Puppet'
 'patterns': [
   {
+    'include': '#numbers'
+  }
+  {
     'include': '#line_comment'
   }
   {
@@ -445,3 +448,9 @@
         'include': '#cases'
       }
     ]
+  'numbers':
+    'captures':
+      '1':
+        'name': 'number.constant.puppet'
+    'match': '(?:(?:\\D&\\W)|\\s|^|\\[|\\{|,|;|\\()(\\d+([.]\\d+)?)(?!\\w)'
+    'name': 'meta.control.puppet'
