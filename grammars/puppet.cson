@@ -380,10 +380,6 @@
         'name': 'meta.hash.puppet'
         'patterns': [
           {
-            'match': '\\b\\w+\\s*(?==>)\\s*'
-            'name': 'constant.other.key.puppet'
-          }
-          {
             'include': '#parameter-default-types'
           }
         ]
@@ -431,6 +427,9 @@
         'name': 'variable.other.readwrite.global.puppet'
       }
     ]
+  'constants':
+    'match': '(?:(?:\\D&\\W)|\\s|^|\\[|\\{|,|;|\\()[A-Z]\\w*',
+    'name': 'constant.support.puppet'
   'conditionals':
     'patterns': [
       {
