@@ -349,6 +349,9 @@
       {
         'include': '#constants'
       }
+      {
+        'include': '#metaparameters'
+      }
     ]
   'array':
       {
@@ -471,3 +474,9 @@
         'name': 'number.constant.puppet'
     'match': '(?:(?:\\D&\\W)|\\s|^|\\[|\\{|,|;|\\()(\\d+([.]\\d+)?)(?!\\w)'
     'name': 'meta.control.puppet'
+  'metaparameters':
+    'captures':
+      '1':
+        'name': 'name.metaparameter.puppet'
+    'match': '(?:^|\\s)(require|before|notify|subscribe|consumes|exports)\\s*=>'
+    'name': 'meta.metaparameter.puppet'
