@@ -32,6 +32,23 @@ describe "Puppet grammar", ->
       expect(tokens[8]).toEqual value: '=>', scopes: ['source.puppet', 'meta.definition.resource.puppet', 'meta.parameter.resource.puppet', 'punctuation.separator.key-value.puppet']
 
 
+  describe "classes", ->
+    it 'should tokenize a class without parameters', ->
+      {tokens} = grammar.tokenizeLine("class classname {  }")
+      expect(tokens[0]).toEqual value: 'class', scopes: ['source.puppet', 'meta.definition.class.puppet', 'storage.type.puppet']
+      expect(tokens[2]).toEqual value: 'classname', scopes: ['source.puppet', 'meta.definition.class.puppet', 'entity.name.type.class.puppet']
+      expect(tokens[4]).toEqual value: '{', scopes: [ 'source.puppet', 'meta.definition.class.puppet', 'punctuation.definition.class.begin.puppet' ]
+
+    it 'should tokenize a class with parameters', ->
+      {tokens} = grammar.tokenizeLine("class classname ( $parameter1, $parameter2 = 'value', $parameter3 = $classname::params) {  }")
+      expect(tokens[4]).toEqual value: '(', scopes: ['source.puppet', 'meta.definition.class.puppet', 'meta.classparameter.language.puppet', 'punctuation.definition.classparameter.begin.puppet']
+      expect(tokens[21]).toEqual value: ')', scopes: ['source.puppet', 'meta.definition.class.puppet', 'meta.classparameter.language.puppet', 'punctuation.definition.classparameter.end.puppet']
+
+    it 'should tokenize a class with ineritence', ->
+      {tokens} = grammar.tokenizeLine("class classname ( $parameter1, $parameter2 = 'value', $parameter3 = $classname::params) inherits another::class {  }")
+      expect(tokens[23]).toEqual value: 'inherits', scopes: ['source.puppet', 'meta.definition.class.puppet', 'meta.definition.class.inherits.puppet', 'storage.modifier.puppet']
+      expect(tokens[25]).toEqual value: 'another::class', scopes: ['source.puppet', 'meta.definition.class.puppet', 'meta.definition.class.inherits.puppet', 'entity.name.type.class.puppet']
+
   describe "blocks", ->
     it "tokenizes single quoted node", ->
       {tokens} = grammar.tokenizeLine("node 'hostname' {")

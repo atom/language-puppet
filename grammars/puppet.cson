@@ -22,12 +22,15 @@
   }
   {
     'begin': '^\\s*(node|class|application)\\s+((?:[-_A-Za-z0-9"\'.]+::)*[-_A-Za-z0-9"\'.]+)\\s*'
-    'captures':
+    'beginCaptures':
       '1':
         'name': 'storage.type.puppet'
       '2':
         'name': 'entity.name.type.class.puppet'
-    'end': '\\{'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.class.begin.puppet'
+    'end': '{'
     'name': 'meta.definition.class.puppet'
     'patterns': [
       {
@@ -35,7 +38,7 @@
         'captures':
           '1':
             'name': 'storage.modifier.puppet'
-        'end': '\\{'
+        'end': '{'
         'name': 'meta.definition.class.inherits.puppet'
         'patterns': [
           {
