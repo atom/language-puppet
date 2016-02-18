@@ -74,10 +74,17 @@
     'beginCaptures':
       '1':
         'name': 'storage.type.puppet'
-    'begin': '(\\w+(?::{2}\\w+)*)\\s*{'
+    'begin': '((?:[-_A-Za-z0-9".]+::)*[-_A-Za-z0-9".]+)\\s*{'
     'name': 'meta.definition.resource.puppet'
     'end': '}'
     'patterns': [
+      {
+        'captures':
+          '1':
+            'name': 'name.title.puppet'
+        'match': '\\s*(.*):\\s*|\\n'
+        'name': 'meta.title.puppet'
+      }
       {
         'include': '#strings'
       }
