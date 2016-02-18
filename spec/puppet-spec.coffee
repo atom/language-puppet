@@ -19,6 +19,11 @@ describe "Puppet grammar", ->
       {tokens} = grammar.tokenizeLine(manifest)
       expect(tokens[0]).toEqual value: 'type', scopes: ['source.puppet', 'meta.definition.resource.puppet', 'storage.type.puppet']
 
+    it 'tokenizes defined type resources', ->
+      manifest = "classname::type { title: parameter1 => 'stringvalue', inlineparameter => Resource['reference']; }"
+      {tokens} = grammar.tokenizeLine(manifest)
+      expect(tokens[0]).toEqual value: 'classname::type', scopes: ['source.puppet', 'meta.definition.resource.puppet', 'storage.type.puppet']
+
     it 'tokenizes resource title punctuation', ->
       {tokens} = grammar.tokenizeLine(manifest)
       expect(tokens[3]).toEqual value: ':', scopes: ['source.puppet', 'meta.definition.resource.puppet', 'meta.title.puppet', 'punctuation.classtitle.puppet']
