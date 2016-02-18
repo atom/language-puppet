@@ -7,13 +7,13 @@
 'name': 'Puppet'
 'patterns': [
   {
-    'include': '#numbers'
-  }
-  {
     'include': '#line_comment'
   }
   {
     'include': '#constants'
+  }
+  {
+    'include': '#hash'
   }
   {
     'begin': '^\\s*/\\*'
