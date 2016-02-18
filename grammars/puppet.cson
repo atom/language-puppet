@@ -13,6 +13,9 @@
     'include': '#constants'
   }
   {
+    'include': '#numbers'
+  }
+  {
     'include': '#hash'
   }
   {

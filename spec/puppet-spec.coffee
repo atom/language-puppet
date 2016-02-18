@@ -98,3 +98,12 @@ describe "Puppet grammar", ->
       {tokens} = grammar.tokenizeLine('function(parameter, parameter2)')
       expect(tokens[0]).toEqual value: 'function(', scopes: [ 'source.puppet', 'meta.function.puppet', 'support.function.puppet' ]
       expect(tokens[2]).toEqual value: ')', scopes: [ 'source.puppet', 'meta.function.puppet', 'support.function.puppet']
+
+  describe "numbers", ->
+    it "should tokenize floats", ->
+      {tokens} = grammar.tokenizeLine('883.111999')
+      expect(tokens[0]).toEqual value: '883.111999', scopes: [ 'source.puppet', 'meta.control.puppet', 'number.constant.puppet' ]
+
+    it "should tokenize integers", ->
+      {tokens} = grammar.tokenizeLine('883')
+      expect(tokens[0]).toEqual value: '883', scopes: [ 'source.puppet', 'meta.control.puppet', 'number.constant.puppet' ]
