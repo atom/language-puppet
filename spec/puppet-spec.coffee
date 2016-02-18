@@ -87,3 +87,9 @@ describe "Puppet grammar", ->
     it "tokenizes double quoted node", ->
       {tokens} = grammar.tokenizeLine('node "hostname" {')
       expect(tokens[0]).toEqual value: 'node', scopes: ['source.puppet', 'meta.definition.class.puppet', 'storage.type.puppet']
+
+  describe "functions", ->
+    it 'should tokenize a function with no space between name and (', ->
+      {tokens} = grammar.tokenizeLine('function()')
+      expect(tokens[0]).toEqual value: 'function(', scopes: [ 'source.puppet', 'meta.function.puppet', 'support.function.puppet' ]
+      expect(tokens[1]).toEqual value: ')', scopes: [ 'source.puppet', 'meta.function.puppet', 'support.function.puppet']
