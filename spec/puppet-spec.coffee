@@ -12,14 +12,25 @@ describe "Puppet grammar", ->
     expect(grammar).toBeTruthy()
     expect(grammar.scopeName).toBe "source.puppet"
 
-  describe "separators", ->
-    it "tokenizes attribute separator", ->
-      {tokens} = grammar.tokenizeLine('ensure => present')
-      expect(tokens[1]).toEqual value: '=>', scopes: ['source.puppet', 'punctuation.separator.key-value.puppet']
+  describe "resources", ->
+    manifest = "type { title: parameter1 => 'stringvalue', inlineparameter => Resource['reference']; }"
 
-    it "tokenizes attribute separator with string values", ->
-      {tokens} = grammar.tokenizeLine('ensure => "present"')
-      expect(tokens[1]).toEqual value: '=>', scopes: ['source.puppet', 'punctuation.separator.key-value.puppet']
+    it 'tokenizes resource types', ->
+      {tokens} = grammar.tokenizeLine(manifest)
+      expect(tokens[0]).toEqual value: 'type', scopes: ['source.puppet', 'meta.definition.resource.puppet', 'storage.type.puppet']
+
+    it 'tokenizes resource titles', ->
+      {tokens} = grammar.tokenizeLine(manifest)
+      expect(tokens[3]).toEqual value: 'title', scopes: ['source.puppet', 'meta.definition.resource.puppet', 'meta.title.puppet', 'name.title.puppet']
+
+    it 'tokenizes resource parameter', ->
+      {tokens} = grammar.tokenizeLine(manifest)
+      expect(tokens[6]).toEqual value: 'parameter1', scopes: ['source.puppet', 'meta.definition.resource.puppet', 'meta.parameter.resource.puppet', 'name.parameter.resource.puppet']
+
+    it 'tokenizes resource parameter separators', ->
+      {tokens} = grammar.tokenizeLine(manifest)
+      expect(tokens[8]).toEqual value: '=>', scopes: ['source.puppet', 'meta.definition.resource.puppet', 'meta.parameter.resource.puppet', 'punctuation.separator.key-value.puppet']
+
 
   describe "blocks", ->
     it "tokenizes single quoted node", ->

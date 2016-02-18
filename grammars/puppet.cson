@@ -82,7 +82,7 @@
         'captures':
           '1':
             'name': 'name.title.puppet'
-        'match': '\\s*(.*):\\s*|\\n'
+        'match': '\\s*(.*):'
         'name': 'meta.title.puppet'
       }
       {
@@ -98,9 +98,11 @@
         'beginCaptures':
           '1':
             'name': 'name.parameter.resource.puppet'
-        'begin': '(?:^|\\W)(\\w+)\\s*=>'
+          '2':
+            'name': 'punctuation.separator.key-value.puppet'
+        'begin': '(\\w+)\\s*(=>)'
         'name': 'meta.parameter.resource.puppet'
-        'end': '(,|\\n|;)'
+        'end': ',|\\n|;'
         'patterns': [
           {
             'include': '#parameter-default-types'
@@ -333,16 +335,23 @@
       }
   'hash':
       {
-        'begin': '\\{'
+        'begin': '{'
         'beginCaptures':
           '0':
             'name': 'punctuation.definition.hash.begin.puppet'
-        'end': '\\}'
+        'end': '}'
         'endCaptures':
           '0':
             'name': 'punctuation.definition.hash.end.puppet'
         'name': 'meta.hash.puppet'
         'patterns': [
+          {
+            'captures':
+              '0':
+                'name': 'punctuation.separator.key-value.puppet'
+            'match': '=>'
+            'name': 'meta.punctuation.hash.puppet'
+          }
           {
             'include': '#parameter-default-types'
           }
