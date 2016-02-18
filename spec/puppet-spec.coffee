@@ -73,7 +73,13 @@ describe "Puppet grammar", ->
       expect(tokens[4]).toEqual value: '(', scopes: ['source.puppet', 'meta.definition.class.puppet', 'meta.classparameter.language.puppet', 'punctuation.definition.classparameter.begin.puppet']
       expect(tokens[21]).toEqual value: ')', scopes: ['source.puppet', 'meta.definition.class.puppet', 'meta.classparameter.language.puppet', 'punctuation.definition.classparameter.end.puppet']
 
-  describe "blocks", ->
+  describe "constants", ->
+    it 'should tokenize a resource reference', ->
+      {tokens} = grammar.tokenizeLine("Resource::Reference[title]")
+      expect(tokens[0]).toEqual value: "Resource::Reference[", scopes: ['source.puppet', 'constant.support.puppet']
+      expect(tokens[2]).toEqual value: "]", scopes: ['source.puppet', 'constant.support.puppet']
+
+  describe "nodes", ->
     it "tokenizes single quoted node", ->
       {tokens} = grammar.tokenizeLine("node 'hostname' {")
       expect(tokens[0]).toEqual value: 'node', scopes: ['source.puppet', 'meta.definition.class.puppet', 'storage.type.puppet']
