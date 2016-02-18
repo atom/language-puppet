@@ -19,17 +19,17 @@ describe "Puppet grammar", ->
       {tokens} = grammar.tokenizeLine(manifest)
       expect(tokens[0]).toEqual value: 'type', scopes: ['source.puppet', 'meta.definition.resource.puppet', 'storage.type.puppet']
 
-    it 'tokenizes resource titles', ->
+    it 'tokenizes resource title punctuation', ->
       {tokens} = grammar.tokenizeLine(manifest)
-      expect(tokens[3]).toEqual value: 'title', scopes: ['source.puppet', 'meta.definition.resource.puppet', 'meta.title.puppet', 'name.title.puppet']
+      expect(tokens[3]).toEqual value: ':', scopes: ['source.puppet', 'meta.definition.resource.puppet', 'meta.title.puppet', 'punctuation.classtitle.puppet']
 
     it 'tokenizes resource parameter', ->
       {tokens} = grammar.tokenizeLine(manifest)
-      expect(tokens[6]).toEqual value: 'parameter1', scopes: ['source.puppet', 'meta.definition.resource.puppet', 'meta.parameter.resource.puppet', 'name.parameter.resource.puppet']
+      expect(tokens[5]).toEqual value: 'parameter1', scopes: ['source.puppet', 'meta.definition.resource.puppet', 'meta.parameter.resource.puppet', 'name.parameter.resource.puppet']
 
     it 'tokenizes resource parameter separators', ->
       {tokens} = grammar.tokenizeLine(manifest)
-      expect(tokens[8]).toEqual value: '=>', scopes: ['source.puppet', 'meta.definition.resource.puppet', 'meta.parameter.resource.puppet', 'punctuation.separator.key-value.puppet']
+      expect(tokens[7]).toEqual value: '=>', scopes: ['source.puppet', 'meta.definition.resource.puppet', 'meta.parameter.resource.puppet', 'punctuation.separator.key-value.puppet']
 
 
   describe "classes", ->

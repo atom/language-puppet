@@ -63,8 +63,8 @@
       {
         'captures':
           '1':
-            'name': 'name.title.puppet'
-        'match': '\\s*(.*):'
+            'name': 'punctuation.classtitle.puppet'
+        'match': '(:)'
         'name': 'meta.title.puppet'
       }
       {
@@ -383,8 +383,23 @@
       }
     ]
   'constants':
-    'match': '(?:(?:\\D&\\W)|\\s|^|\\[|\\{|,|;|\\()[A-Z]\\w*',
-    'name': 'constant.support.puppet'
+    'beginCaptures':
+      '0':
+        'name': 'constant.support.puppet'
+    'begin': '((?:[-_A-Za-z0-9"\'.]+::)*[-_A-Za-z0-9"\'.]+)\\['
+    'endCaptures':
+      '0':
+        'name': 'constant.support.puppet'
+    'end': '\\]'
+    'patterns': [
+      {
+        'include': '#strings'
+      }
+      {
+        'include': '#variables'
+      }
+    ]
+
   'conditionals':
     'patterns': [
       {
