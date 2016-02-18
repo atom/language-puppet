@@ -49,6 +49,18 @@ describe "Puppet grammar", ->
       expect(tokens[23]).toEqual value: 'inherits', scopes: ['source.puppet', 'meta.definition.class.puppet', 'meta.definition.class.inherits.puppet', 'storage.modifier.puppet']
       expect(tokens[25]).toEqual value: 'another::class', scopes: ['source.puppet', 'meta.definition.class.puppet', 'meta.definition.class.inherits.puppet', 'entity.name.type.class.puppet']
 
+  describe "applications", ->
+    it 'should tokenize an application without parameters', ->
+      {tokens} = grammar.tokenizeLine("application appname {  }")
+      expect(tokens[0]).toEqual value: 'application', scopes: ['source.puppet', 'meta.definition.class.puppet', 'storage.type.puppet']
+      expect(tokens[2]).toEqual value: 'appname', scopes: ['source.puppet', 'meta.definition.class.puppet', 'entity.name.type.class.puppet']
+      expect(tokens[4]).toEqual value: '{', scopes: [ 'source.puppet', 'meta.definition.class.puppet', 'punctuation.definition.class.begin.puppet' ]
+
+    it 'should tokenize an application with parameters', ->
+      {tokens} = grammar.tokenizeLine("application appname ( $parameter1, $parameter2 = 'value', $parameter3 = $classname::params) {  }")
+      expect(tokens[4]).toEqual value: '(', scopes: ['source.puppet', 'meta.definition.class.puppet', 'meta.classparameter.language.puppet', 'punctuation.definition.classparameter.begin.puppet']
+      expect(tokens[21]).toEqual value: ')', scopes: ['source.puppet', 'meta.definition.class.puppet', 'meta.classparameter.language.puppet', 'punctuation.definition.classparameter.end.puppet']
+
   describe "blocks", ->
     it "tokenizes single quoted node", ->
       {tokens} = grammar.tokenizeLine("node 'hostname' {")
