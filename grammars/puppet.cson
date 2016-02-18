@@ -71,6 +71,9 @@
         'name': 'meta.title.puppet'
       }
       {
+        'include': '#line_comment'
+      }
+      {
         'include': '#strings'
       }
       {
