@@ -61,6 +61,18 @@ describe "Puppet grammar", ->
       expect(tokens[4]).toEqual value: '(', scopes: ['source.puppet', 'meta.definition.class.puppet', 'meta.classparameter.language.puppet', 'punctuation.definition.classparameter.begin.puppet']
       expect(tokens[21]).toEqual value: ')', scopes: ['source.puppet', 'meta.definition.class.puppet', 'meta.classparameter.language.puppet', 'punctuation.definition.classparameter.end.puppet']
 
+  describe "defined types", ->
+    it 'should tokenize a defined type without parameters', ->
+      {tokens} = grammar.tokenizeLine("define typename {  }")
+      expect(tokens[0]).toEqual value: 'define', scopes: ['source.puppet', 'meta.definition.class.puppet', 'storage.type.puppet']
+      expect(tokens[2]).toEqual value: 'typename', scopes: ['source.puppet', 'meta.definition.class.puppet', 'entity.name.type.class.puppet']
+      expect(tokens[4]).toEqual value: '{', scopes: [ 'source.puppet', 'meta.definition.class.puppet', 'punctuation.definition.class.begin.puppet' ]
+
+    it 'should tokenize a defined type with parameters', ->
+      {tokens} = grammar.tokenizeLine("define typename ( $parameter1, $parameter2 = 'value', $parameter3 = $classname::params) {  }")
+      expect(tokens[4]).toEqual value: '(', scopes: ['source.puppet', 'meta.definition.class.puppet', 'meta.classparameter.language.puppet', 'punctuation.definition.classparameter.begin.puppet']
+      expect(tokens[21]).toEqual value: ')', scopes: ['source.puppet', 'meta.definition.class.puppet', 'meta.classparameter.language.puppet', 'punctuation.definition.classparameter.end.puppet']
+
   describe "blocks", ->
     it "tokenizes single quoted node", ->
       {tokens} = grammar.tokenizeLine("node 'hostname' {")

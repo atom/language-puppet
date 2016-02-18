@@ -21,7 +21,7 @@
     'name': 'comment.block.puppet'
   }
   {
-    'begin': '^\\s*(node|class|application)\\s+((?:[-_A-Za-z0-9"\'.]+::)*[-_A-Za-z0-9"\'.]+)\\s*'
+    'begin': '^\\s*(node|define|class|application)\\s+((?:[-_A-Za-z0-9"\'.]+::)*[-_A-Za-z0-9"\'.]+)\\s*'
     'beginCaptures':
       '1':
         'name': 'storage.type.puppet'
@@ -47,27 +47,6 @@
           }
         ]
       }
-      {
-        'include': '#defineparameters'
-      }
-    ]
-  }
-  {
-    'begin': '^\\s*(define)\\s+([a-zA-Z0-9_:]+)\\s*(\\()'
-    'beginCaptures':
-      '1':
-        'name': 'storage.type.function.puppet'
-      '2':
-        'name': 'entity.name.function.puppet'
-      '3':
-        'name': 'punctuation.definition.parameters.begin.puppet'
-    'contentName': 'meta.function.arguments.puppet'
-    'end': '\\)'
-    'endCaptures':
-      '1':
-        'name': 'punctuation.definition.parameters.end.puppet'
-    'name': 'meta.function.puppet'
-    'patterns': [
       {
         'include': '#defineparameters'
       }
