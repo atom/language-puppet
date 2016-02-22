@@ -95,8 +95,9 @@ describe "Puppet grammar", ->
   describe "functions", ->
     it 'should tokenize a function with no space between name and (', ->
       {tokens} = grammar.tokenizeLine('function(parameter, parameter2)')
-      expect(tokens[0]).toEqual value: 'function(', scopes: [ 'source.puppet', 'meta.function.puppet', 'support.function.puppet' ]
-      expect(tokens[2]).toEqual value: ')', scopes: [ 'source.puppet', 'meta.function.puppet', 'support.function.puppet']
+      expect(tokens[0]).toEqual value: 'function', scopes: [ 'source.puppet', 'meta.function.puppet', 'support.function.puppet' ]
+      expect(tokens[1]).toEqual value: '(', scopes: [ 'source.puppet', 'meta.function.puppet', 'punctuation.definition.function.begin.puppet' ]
+      expect(tokens[3]).toEqual value: ')', scopes: [ 'source.puppet', 'meta.function.puppet', 'punctuation.definition.function.end.puppet' ]
 
   describe "numbers", ->
     it "should tokenize floats", ->

@@ -136,7 +136,7 @@
 ]
 'repository':
   'functions':
-    'begin': '(?:^|\\s|\\W)(\\w+)\\s*(\\()'
+    'begin': '(?:^|\\s|\\W|\\D)(\\w+)\\s*(\\()'
     'beginCaptures':
       '1':
         'name': 'support.function.puppet'
