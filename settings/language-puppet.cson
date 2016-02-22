@@ -19,3 +19,11 @@
       'source'
       'unless'
     ]
+    'increaseIndentPattern': '(?x)
+        (\'(\\\\.|[^\\\'])*\'|"(\\\\.|[^\\"])*")\\s*:\\s*$
+      | ^\\s*\\]\\s*:\\s*$
+      | \\{\\s*$
+      | \\[\\s*$'
+    'decreaseIndentPattern': '(?x)
+        ^\\s*\\}
+      | ^\\s*\\]'
