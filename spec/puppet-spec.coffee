@@ -97,7 +97,8 @@ describe "Puppet grammar", ->
       {tokens} = grammar.tokenizeLine('function(parameter, parameter2)')
       expect(tokens[0]).toEqual value: 'function', scopes: [ 'source.puppet', 'meta.function.puppet', 'support.function.puppet' ]
       expect(tokens[1]).toEqual value: '(', scopes: [ 'source.puppet', 'meta.function.puppet', 'punctuation.definition.function.begin.puppet' ]
-      expect(tokens[3]).toEqual value: ')', scopes: [ 'source.puppet', 'meta.function.puppet', 'punctuation.definition.function.end.puppet' ]
+      expect(tokens[3]).toEqual value: ',', scopes: [ 'source.puppet', 'meta.function.puppet', 'punctuation.separator.parameter.puppet' ]
+      expect(tokens[5]).toEqual value: ')', scopes: [ 'source.puppet', 'meta.function.puppet', 'punctuation.definition.function.end.puppet' ]
 
   describe "numbers", ->
     it "should tokenize floats", ->

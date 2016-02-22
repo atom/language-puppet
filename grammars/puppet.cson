@@ -149,6 +149,10 @@
     'name': 'meta.function.puppet'
     'patterns': [
       {
+        'match': ','
+        'name': 'punctuation.separator.parameter.puppet'
+      }
+      {
         'include': '#parameter-default-types'
       }
     ]
@@ -380,16 +384,16 @@
         'captures':
           '1':
             'name': 'punctuation.definition.variable.puppet'
-        'match': '(\\$)([a-zA-Zx7f-xff\\$]|::)([a-zA-Z0-9_x7f-xff\\$]|::)*\\b'
+        'match': '(\\${*)([a-zA-Zx7f-xff\\$]|::)([a-zA-Z0-9_x7f-xff\\$]|::)*\\b'
         'name': 'variable.other.readwrite.global.puppet'
       }
       {
+        'match': '(\\$\\{)(?:[a-zA-Zx7f-xff\\$]|::)(?:[a-zA-Z0-9_x7f-xff\\$]|::)*(\\})'
         'captures':
           '1':
             'name': 'punctuation.definition.variable.puppet'
           '2':
             'name': 'punctuation.definition.variable.puppet'
-        'match': '(\\$\\{)(?:[a-zA-Zx7f-xff\\$]|::)(?:[a-zA-Z0-9_x7f-xff\\$]|::)*(\\})'
         'name': 'variable.other.readwrite.global.puppet'
       }
     ]
