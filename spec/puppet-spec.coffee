@@ -36,7 +36,6 @@ describe "Puppet grammar", ->
       {tokens} = grammar.tokenizeLine(manifest)
       expect(tokens[7]).toEqual value: '=>', scopes: ['source.puppet', 'meta.definition.resource.puppet', 'meta.parameter.resource.puppet', 'punctuation.separator.key-value.puppet']
 
-
   describe "classes", ->
     it 'should tokenize a class without parameters', ->
       {tokens} = grammar.tokenizeLine("class classname {  }")

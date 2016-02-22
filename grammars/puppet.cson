@@ -30,18 +30,21 @@
         'name': 'storage.type.puppet'
       '2':
         'name': 'entity.name.type.class.puppet'
+    'end': '{'
     'endCaptures':
       '0':
         'name': 'punctuation.definition.class.begin.puppet'
-    'end': '{'
     'name': 'meta.definition.class.puppet'
     'patterns': [
       {
         'begin': '\\b(inherits)\\b\\s+'
-        'captures':
+        'beginCaptures':
           '1':
             'name': 'storage.modifier.puppet'
         'end': '{'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.class.begin.puppet'
         'name': 'meta.definition.class.inherits.puppet'
         'patterns': [
           {
@@ -56,18 +59,18 @@
     ]
   }
   {
+    'begin': '((?:[-_A-Za-z0-9".]+::)*[-_A-Za-z0-9".]+)\\s*{'
     'beginCaptures':
       '1':
         'name': 'storage.type.puppet'
-    'begin': '((?:[-_A-Za-z0-9".]+::)*[-_A-Za-z0-9".]+)\\s*{'
     'name': 'meta.definition.resource.puppet'
     'end': '}'
     'patterns': [
       {
+        'match': ':'
         'captures':
-          '1':
+          '0':
             'name': 'punctuation.classtitle.puppet'
-        'match': '(:)'
         'name': 'meta.title.puppet'
       }
       {
@@ -133,14 +136,16 @@
 ]
 'repository':
   'functions':
+    'begin': '(?:^|\\s|\\W)(\\w+)\\s*(\\()'
     'beginCaptures':
-      '0':
+      '1':
         'name': 'support.function.puppet'
+      '2':
+        'name': 'punctuation.definition.function.begin.puppet'
+    'end': '\\)'
     'endCaptures':
       '0':
-        'name': 'support.function.puppet'
-    'begin': '(?:^|\\s|\\W)(\\w+)\\s*\\('
-    'end': '\\)'
+        'name': 'punctuation.definition.function.end.puppet'
     'name': 'meta.function.puppet'
     'patterns': [
       {
@@ -405,7 +410,6 @@
         'include': '#variables'
       }
     ]
-
   'conditionals':
     'patterns': [
       {
