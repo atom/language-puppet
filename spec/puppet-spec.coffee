@@ -51,7 +51,7 @@ describe "Puppet grammar", ->
     it 'should tokenize a class with ineritence', ->
       {tokens} = grammar.tokenizeLine("class classname ( $parameter1, $parameter2 = 'value', $parameter3 = $classname::params) inherits another::class {  }")
       expect(tokens[23]).toEqual value: 'inherits', scopes: ['source.puppet', 'meta.definition.class.puppet', 'meta.definition.class.inherits.puppet', 'storage.modifier.puppet']
-      expect(tokens[25]).toEqual value: 'another::class', scopes: ['source.puppet', 'meta.definition.class.puppet', 'meta.definition.class.inherits.puppet', 'entity.name.type.class.puppet']
+      expect(tokens[25]).toEqual value: 'another::class', scopes: ['source.puppet', 'meta.definition.class.puppet', 'meta.definition.class.inherits.puppet', 'entity.other.inherited-class.puppet']
 
   describe "applications", ->
     it 'should tokenize an application without parameters', ->
@@ -103,8 +103,8 @@ describe "Puppet grammar", ->
   describe "numbers", ->
     it "should tokenize floats", ->
       {tokens} = grammar.tokenizeLine('883.111999')
-      expect(tokens[0]).toEqual value: '883.111999', scopes: [ 'source.puppet', 'meta.control.puppet', 'number.constant.puppet' ]
+      expect(tokens[0]).toEqual value: '883.111999', scopes: [ 'source.puppet', 'meta.control.puppet', 'constant.numeric.puppet']
 
     it "should tokenize integers", ->
       {tokens} = grammar.tokenizeLine('883')
-      expect(tokens[0]).toEqual value: '883', scopes: [ 'source.puppet', 'meta.control.puppet', 'number.constant.puppet' ]
+      expect(tokens[0]).toEqual value: '883', scopes: [ 'source.puppet', 'meta.control.puppet', 'constant.numeric.puppet']
