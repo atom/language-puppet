@@ -49,7 +49,7 @@
         'patterns': [
           {
             'match': '\\b((?:[-_A-Za-z0-9".]+::)*[-_A-Za-z0-9".]+)\\b'
-            'name': 'entity.name.type.class.puppet'
+            'name': 'entity.other.inherited-class.puppet'
           }
         ]
       }
@@ -452,7 +452,7 @@
   'numbers':
     'captures':
       '1':
-        'name': 'number.constant.puppet'
+        'name': 'constant.numeric.puppet'
     'match': '(?:(?:\\D&\\W)|\\s|^|\\[|\\{|,|;|\\()(\\d+([.]\\d+)?)(?!\\w)'
     'name': 'meta.control.puppet'
   'define-parameters':
