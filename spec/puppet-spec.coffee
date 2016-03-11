@@ -29,3 +29,11 @@ describe "Puppet grammar", ->
     it "tokenizes double quoted node", ->
       {tokens} = grammar.tokenizeLine('node "hostname" {')
       expect(tokens[0]).toEqual value: 'node', scopes: ['source.puppet', 'meta.definition.class.puppet', 'storage.type.puppet']
+
+    it "tokenizes include as an include function", ->
+      {tokens} = grammar.tokenizeLine("contain foo")
+      expect(tokens[0]).toEqual value: 'contain', scopes: ['source.puppet', 'meta.include.puppet', 'keyword.control.import.include.puppet']
+
+    it "tokenizes contain as an include function", ->
+      {tokens} = grammar.tokenizeLine('include foo')
+      expect(tokens[0]).toEqual value: 'include', scopes: ['source.puppet', 'meta.include.puppet', 'keyword.control.import.include.puppet']
