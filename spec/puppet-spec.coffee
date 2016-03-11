@@ -79,3 +79,8 @@ describe "Puppet grammar", ->
 
       {tokens} = grammar.tokenizeLine("package {'foo':}")
       expect(tokens[0]).toEqual value: 'package', scopes: ['source.puppet', 'meta.definition.resource.puppet', 'storage.type.puppet']
+
+    it "tokenizes resource with space after title", ->
+      {tokens} = grammar.tokenizeLine("package {'foo' :")
+      expect(tokens[0]).toEqual value: 'package', scopes: ['source.puppet', 'meta.definition.resource.puppet', 'storage.type.puppet']
+      expect(tokens[3]).toEqual value: ':', scopes: ['source.puppet', 'meta.definition.resource.puppet', 'entity.name.section.puppet']
