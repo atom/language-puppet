@@ -123,6 +123,15 @@
     'name': 'meta.definition.resource.puppet'
   }
   {
+    'match': '^\\s*(\\w+)\\s*{\\s*(\\$[a-zA-Z_]+)\\s*:'
+    'captures':
+      '1':
+        'name': 'storage.type.puppet'
+      '2':
+        'name': 'entity.name.section.puppet'
+    'name': 'meta.definition.resource.puppet'
+  }
+  {
     'match': '\\b(case|if|else|elsif)(?!::)\\b'
     'name': 'keyword.control.puppet'
   }
