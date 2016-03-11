@@ -47,3 +47,11 @@ describe "Puppet grammar", ->
       {tokens} = grammar.tokenizeLine("package {$foo:}")
       expect(tokens[0]).toEqual value: 'package', scopes: ['source.puppet', 'meta.definition.resource.puppet', 'storage.type.puppet']
       expect(tokens[2]).toEqual value: '$foo', scopes: ['source.puppet', 'meta.definition.resource.puppet', 'entity.name.section.puppet']
+
+    it "tokenizes require classname as an include", ->
+      {tokens} = grammar.tokenizeLine("require ::foo")
+      expect(tokens[0]).toEqual value: 'require', scopes: ['source.puppet', 'meta.include.puppet', 'keyword.control.import.include.puppet']
+
+    it "tokenizes require => variable as a parameter", ->
+      {tokens} = grammar.tokenizeLine("require => Class['foo']")
+      expect(tokens[0]).toEqual value: 'require ', scopes: ['source.puppet', 'constant.other.key.puppet']
