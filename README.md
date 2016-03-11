@@ -7,3 +7,7 @@ from the [Puppet TextMate bundle](https://github.com/cburyta/puppet-textmate.tmb
 
 Contributions are greatly appreciated. Please fork this repository and open a
 pull request to add snippets, make grammar tweaks, etc.
+
+# Contributing
+
+See [contributing guide](CONTRIBUTING.md).
