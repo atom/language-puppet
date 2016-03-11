@@ -137,7 +137,7 @@
     'include': '#variable'
   }
   {
-    'begin': '(?i)\\b(import|include)\\b\\s*'
+    'begin': '(?i)\\b(import|include|contain)\\b\\s*'
     'beginCaptures':
       '1':
         'name': 'keyword.control.import.include.puppet'
@@ -153,7 +153,7 @@
     'name': 'constant.other.bareword.puppet'
   }
   {
-    'match': '(?i)\\b(alert|contain|crit|debug|defined|emerg|err|escape|fail|failed|file|generate|gsub|include|info|notice|package|realize|search|tag|tagged|template|warning)\\b'
+    'match': '(?i)\\b(alert|crit|debug|defined|emerg|err|escape|fail|failed|file|generate|gsub|info|notice|package|realize|search|tag|tagged|template|warning)\\b'
     'name': 'support.function.puppet'
   }
   {
