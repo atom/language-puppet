@@ -72,3 +72,10 @@ describe "Puppet grammar", ->
       {tokens} = grammar.tokenizeLine('$::foo')
       expect(tokens[0]).toEqual value: '$', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
       expect(tokens[1]).toEqual value: '::foo', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet']
+
+    it "tokenizes resource types correctly", ->
+      {tokens} = grammar.tokenizeLine("file {'/var/tmp':}")
+      expect(tokens[0]).toEqual value: 'file', scopes: ['source.puppet', 'meta.definition.resource.puppet', 'storage.type.puppet']
+
+      {tokens} = grammar.tokenizeLine("package {'foo':}")
+      expect(tokens[0]).toEqual value: 'package', scopes: ['source.puppet', 'meta.definition.resource.puppet', 'storage.type.puppet']
