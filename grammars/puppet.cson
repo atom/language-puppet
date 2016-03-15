@@ -410,7 +410,7 @@
         'captures':
           '1':
             'name': 'punctuation.definition.variable.puppet'
-        'match': '(\\$)([a-zA-Zx7f-xff\\$]|::)([a-zA-Z0-9_x7f-xff\\$]|::)*\\b'
+        'match': '(\\$)((::)?[a-z]\\w*)*((::)?[a-z_]\\w*)\\b'
         'name': 'variable.other.readwrite.global.puppet'
       }
       {

@@ -55,3 +55,20 @@ describe "Puppet grammar", ->
     it "tokenizes require => variable as a parameter", ->
       {tokens} = grammar.tokenizeLine("require => Class['foo']")
       expect(tokens[0]).toEqual value: 'require ', scopes: ['source.puppet', 'constant.other.key.puppet']
+
+    it "tokenizes regular variables", ->
+      {tokens} = grammar.tokenizeLine('$foo')
+      expect(tokens[0]).toEqual value: '$', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+      expect(tokens[1]).toEqual value: 'foo', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet']
+
+      {tokens} = grammar.tokenizeLine('$_foo')
+      expect(tokens[0]).toEqual value: '$', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+      expect(tokens[1]).toEqual value: '_foo', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet']
+
+      {tokens} = grammar.tokenizeLine('$_foo_')
+      expect(tokens[0]).toEqual value: '$', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+      expect(tokens[1]).toEqual value: '_foo_', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet']
+
+      {tokens} = grammar.tokenizeLine('$::foo')
+      expect(tokens[0]).toEqual value: '$', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+      expect(tokens[1]).toEqual value: '::foo', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet']
