@@ -146,7 +146,7 @@
     'include': '#variable'
   }
   {
-    'begin': '(?i)\\b(import|include|contain)\\b\\s*'
+    'begin': '\\b(import|include|contain|require)\\s+(?!.*=>)'
     'beginCaptures':
       '1':
         'name': 'keyword.control.import.include.puppet'
