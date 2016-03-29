@@ -162,7 +162,7 @@
     'name': 'constant.other.bareword.puppet'
   }
   {
-    'match': '(?i)\\b(alert|crit|debug|defined|emerg|err|escape|fail|failed|file|generate|gsub|info|notice|package|realize|search|tag|tagged|template|warning)\\b'
+    'match': '\\b(alert|crit|debug|defined|emerg|err|escape|fail|failed|file|generate|gsub|info|notice|package|realize|search|tag|tagged|template|warning)\\b(?!.*{)'
     'name': 'support.function.puppet'
   }
   {
@@ -174,7 +174,7 @@
   'constants':
     'patterns': [
       {
-        'match': '(?i)\\b(absent|directory|false|file|present|running|stopped|true)\\b'
+        'match': '\\b(absent|directory|false|file|present|running|stopped|true)\\b(?!.*{)'
         'name': 'constant.language.puppet'
       }
     ]
