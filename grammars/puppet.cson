@@ -1,6 +1,7 @@
 'scopeName': 'source.puppet'
 'fileTypes': [
-  'pp'
+  'pp',
+  'epp'
 ]
 'foldingStartMarker': '(^\\s*/\\*|(\\{|\\[|\\()\\s*$)'
 'foldingStopMarker': '(\\*/|^\\s*(\\}|\\]|\\)))'
