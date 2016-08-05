@@ -30,6 +30,16 @@ describe "Puppet grammar", ->
       {tokens} = grammar.tokenizeLine('node "hostname" {')
       expect(tokens[0]).toEqual value: 'node', scopes: ['source.puppet', 'meta.definition.class.puppet', 'storage.type.puppet']
 
+    it "tokenizes non-default class parameters", ->
+      {tokens} = grammar.tokenizeLine('class "classname" ($myvar) {')
+      expect(tokens[5]).toEqual value: '$', scopes: ['source.puppet', 'meta.definition.class.puppet', 'meta.function.argument.no-default.untyped.puppet', 'variable.other.puppet', 'punctuation.definition.variable.puppet']
+      expect(tokens[6]).toEqual value: 'myvar', scopes: ['source.puppet', 'meta.definition.class.puppet', 'meta.function.argument.no-default.untyped.puppet', 'variable.other.puppet']
+
+    it "tokenizes default class parameters", ->
+      {tokens} = grammar.tokenizeLine('class "classname" ($myvar = "myval") {')
+      expect(tokens[5]).toEqual value: '$', scopes: ['source.puppet', 'meta.definition.class.puppet', 'meta.function.argument.default.untyped.puppet', 'variable.other.puppet', 'punctuation.definition.variable.puppet']
+      expect(tokens[6]).toEqual value: 'myvar', scopes: ['source.puppet', 'meta.definition.class.puppet', 'meta.function.argument.default.untyped.puppet', 'variable.other.puppet']
+
     it "tokenizes non-default class parameter types", ->
       {tokens} = grammar.tokenizeLine('class "classname" (String $myvar) {')
       expect(tokens[5]).toEqual value: 'String', scopes: ['source.puppet', 'meta.definition.class.puppet', 'meta.function.argument.no-default.typed.puppet', 'storage.type.puppet']
