@@ -43,14 +43,31 @@
         ]
       }
       {
+        'include' : '#line_comment'
+      }
+      # `$param,`
+      {
         'captures':
           '1':
             'name': 'variable.other.puppet'
           '2':
             'name': 'punctuation.definition.variable.puppet'
         'match': '((\\$+)[a-zA-Z_][a-zA-Z0-9_]*)\\s*(?=,|\\))'
-        'name': 'meta.function.argument.no-default.puppet'
+        'name': 'meta.function.argument.no-default.untyped.puppet'
       }
+      # Type `$param,`
+      {
+        'captures':
+          '1':
+            'name': 'storage.type.puppet'
+          '2':
+            'name': 'variable.other.puppet'
+          '3':
+            'name': 'punctuation.definition.variable.puppet'
+        'match': '((?:[-_A-Za-z0-9"\'.]+::)*[-_A-Za-z0-9"\'.]+)\\s((\\$+)[a-zA-Z_][a-zA-Z0-9_]*)\\s*(?=,|\\))'
+        'name': 'meta.function.argument.no-default.typed.puppet'
+      }
+      # `$param = ...,`
       {
         'begin': '((\\$+)[a-zA-Z_][a-zA-Z0-9_]*)(?:\\s*(=)\\s*)\\s*'
         'captures':
@@ -61,7 +78,22 @@
           '3':
             'name': 'keyword.operator.assignment.puppet'
         'end': '(?=,|\\))'
-        'name': 'meta.function.argument.default.puppet'
+        'name': 'meta.function.argument.default.untyped.puppet'
+      }
+      # Type `$param = ...,`
+      {
+        'begin': '((?:[-_A-Za-z0-9"\'.]+::)*[-_A-Za-z0-9"\'.]+)\\s((\\$+)[a-zA-Z_][a-zA-Z0-9_]*)(?:\\s*(=)\\s*)\\s*'
+        'captures':
+          '1':
+            'name': 'storage.type.puppet'
+          '2':
+            'name': 'variable.other.puppet'
+          '3':
+            'name': 'punctuation.definition.variable.puppet'
+          '4':
+            'name': 'keyword.operator.assignment.puppet'
+        'end': '(?=,|\\))'
+        'name': 'meta.function.argument.default.typed.puppet'
         'patterns': [
           {
             'include': '#parameter-default-types'
