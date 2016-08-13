@@ -164,7 +164,7 @@
     'name': 'meta.definition.resource.puppet'
   }
   {
-    'match': '\\b(case|if|else|elsif)(?!::)\\b'
+    'match': '\\b(case|if|else|elsif|unless)(?!::)\\b'
     'name': 'keyword.control.puppet'
   }
   {
