@@ -91,6 +91,109 @@ describe "Puppet grammar", ->
       expect(tokens[0]).toEqual value: '$', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
       expect(tokens[1]).toEqual value: '::foo', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet']
 
+      {tokens} = grammar.tokenizeLine('$foo::bar')
+      expect(tokens[0]).toEqual value: '$', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+      expect(tokens[1]).toEqual value: 'foo::bar', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet']
+
+      {tokens} = grammar.tokenizeLine('$::foo::bar')
+      expect(tokens[0]).toEqual value: '$', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+      expect(tokens[1]).toEqual value: '::foo::bar', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet']
+
+    it "tokenizes subscripted variables correctly", ->
+      {tokens} = grammar.tokenizeLine('$foo[bar]')
+      expect(tokens[0]).toEqual value: '$', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+      expect(tokens[1]).toEqual value: 'foo[bar]', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet']
+
+      {tokens} = grammar.tokenizeLine('$::foo[bar]')
+      expect(tokens[0]).toEqual value: '$', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+      expect(tokens[1]).toEqual value: '::foo[bar]', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet']
+
+      {tokens} = grammar.tokenizeLine('$foo::bar[baz]')
+      expect(tokens[0]).toEqual value: '$', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+      expect(tokens[1]).toEqual value: 'foo::bar[baz]', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet']
+
+      {tokens} = grammar.tokenizeLine('$::foo::bar[baz]')
+      expect(tokens[0]).toEqual value: '$', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+      expect(tokens[1]).toEqual value: '::foo::bar[baz]', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet']
+
+      {tokens} = grammar.tokenizeLine('$foo[bar][baz]')
+      expect(tokens[0]).toEqual value: '$', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+      expect(tokens[1]).toEqual value: 'foo[bar][baz]', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet']
+
+      {tokens} = grammar.tokenizeLine('$::foo[bar][baz]')
+      expect(tokens[0]).toEqual value: '$', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+      expect(tokens[1]).toEqual value: '::foo[bar][baz]', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet']
+
+      {tokens} = grammar.tokenizeLine('$foo::bar[baz][quux]')
+      expect(tokens[0]).toEqual value: '$', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+      expect(tokens[1]).toEqual value: 'foo::bar[baz][quux]', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet']
+
+      {tokens} = grammar.tokenizeLine('$::foo::bar[baz][quux]')
+      expect(tokens[0]).toEqual value: '$', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+      expect(tokens[1]).toEqual value: '::foo::bar[baz][quux]', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet']
+
+    it "tokenizes braced variables", ->
+      {tokens} = grammar.tokenizeLine('${foo}')
+      expect(tokens[0]).toEqual value: '${', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+      expect(tokens[1]).toEqual value: 'foo', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet']
+      expect(tokens[2]).toEqual value: '}', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+
+      {tokens} = grammar.tokenizeLine('${::foo}')
+      expect(tokens[0]).toEqual value: '${', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+      expect(tokens[1]).toEqual value: '::foo', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet']
+      expect(tokens[2]).toEqual value: '}', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+
+      {tokens} = grammar.tokenizeLine('${foo::bar}')
+      expect(tokens[0]).toEqual value: '${', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+      expect(tokens[1]).toEqual value: 'foo::bar', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet']
+      expect(tokens[2]).toEqual value: '}', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+
+      {tokens} = grammar.tokenizeLine('${::foo::bar}')
+      expect(tokens[0]).toEqual value: '${', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+      expect(tokens[1]).toEqual value: '::foo::bar', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet']
+      expect(tokens[2]).toEqual value: '}', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+
+    it "tokenizes braced subscripted variables", ->
+      {tokens} = grammar.tokenizeLine('${foo[bar]}')
+      expect(tokens[0]).toEqual value: '${', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+      expect(tokens[1]).toEqual value: 'foo', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet']
+      expect(tokens[2]).toEqual value: '[bar]}', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+
+      {tokens} = grammar.tokenizeLine('${::foo[bar]}')
+      expect(tokens[0]).toEqual value: '${', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+      expect(tokens[1]).toEqual value: '::foo', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet']
+      expect(tokens[2]).toEqual value: '[bar]}', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+
+      {tokens} = grammar.tokenizeLine('${foo::bar[baz]}')
+      expect(tokens[0]).toEqual value: '${', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+      expect(tokens[1]).toEqual value: 'foo::bar', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet']
+      expect(tokens[2]).toEqual value: '[baz]}', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+
+      {tokens} = grammar.tokenizeLine('${::foo::bar[baz]}')
+      expect(tokens[0]).toEqual value: '${', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+      expect(tokens[1]).toEqual value: '::foo::bar', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet']
+      expect(tokens[2]).toEqual value: '[baz]}', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+
+      {tokens} = grammar.tokenizeLine('${foo[bar][baz]}')
+      expect(tokens[0]).toEqual value: '${', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+      expect(tokens[1]).toEqual value: 'foo', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet']
+      expect(tokens[2]).toEqual value: '[bar][baz]}', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+
+      {tokens} = grammar.tokenizeLine('${::foo[bar][baz]}')
+      expect(tokens[0]).toEqual value: '${', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+      expect(tokens[1]).toEqual value: '::foo', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet']
+      expect(tokens[2]).toEqual value: '[bar][baz]}', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+
+      {tokens} = grammar.tokenizeLine('${foo::bar[baz][quux]}')
+      expect(tokens[0]).toEqual value: '${', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+      expect(tokens[1]).toEqual value: 'foo::bar', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet']
+      expect(tokens[2]).toEqual value: '[baz][quux]}', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+
+      {tokens} = grammar.tokenizeLine('${::foo::bar[baz][quux]}')
+      expect(tokens[0]).toEqual value: '${', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+      expect(tokens[1]).toEqual value: '::foo::bar', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet']
+      expect(tokens[2]).toEqual value: '[baz][quux]}', scopes: ['source.puppet', 'variable.other.readwrite.global.puppet', 'punctuation.definition.variable.puppet']
+
     it "tokenizes resource types correctly", ->
       {tokens} = grammar.tokenizeLine("file {'/var/tmp':}")
       expect(tokens[0]).toEqual value: 'file', scopes: ['source.puppet', 'meta.definition.resource.puppet', 'storage.type.puppet']

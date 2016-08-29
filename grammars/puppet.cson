@@ -442,7 +442,12 @@
         'captures':
           '1':
             'name': 'punctuation.definition.variable.puppet'
-        'match': '(\\$)((::)?[a-z]\\w*)*((::)?[a-z_]\\w*)\\b'
+        # This regex looks for the following pattern:
+        #         $    (::segment)*      (::lastsegment)  ([array]|\b)
+        # segment names match [a-z_]\w*
+        # Both :: parts are optional, to match the following four cases:
+        #   $foo, $::foo, $foo::bar, $::foo::bar
+        'match': '(\\$)((::)?[a-z_]\\w*)*((::)?[a-z_]\\w*)((\\[\\w*\\])+|\\b)'
         'name': 'variable.other.readwrite.global.puppet'
       }
       {
@@ -451,7 +456,9 @@
             'name': 'punctuation.definition.variable.puppet'
           '2':
             'name': 'punctuation.definition.variable.puppet'
-        'match': '(\\$\\{)(?:[a-zA-Zx7f-xff\\$]|::)(?:[a-zA-Z0-9_x7f-xff\\$]|::)*(\\})'
+        # Comments as per above
+        #         ${       foo|::                  (foo|::)*                     ([array]?})
+        'match': '(\\$\\{)(?:[a-zA-Zx7f-xff\\$]|::)(?:[a-zA-Z0-9_x7f-xff\\$]|::)*((\\[\\w*\\])*\\})'
         'name': 'variable.other.readwrite.global.puppet'
       }
     ]
