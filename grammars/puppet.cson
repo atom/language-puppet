@@ -78,6 +78,11 @@
             'name': 'keyword.operator.assignment.puppet'
         'end': '(?=,|\\))'
         'name': 'meta.function.argument.default.untyped.puppet'
+        'patterns': [
+          {
+            'include': '#parameter-default-types'
+          }
+        ]
       }
       # Type `$param = ...,`
       {
@@ -361,14 +366,7 @@
         'include': '#array'
       }
       {
-        'begin': '([a-zA-Z_][a-zA-Z0-9_]*)(\\()'
-        'end': '(\\))'
-        'name': 'meta.function.puppet'
-        'patterns': [
-          {
-            'include': '#parameter-default-types'
-          }
-        ]
+        'include': '#function_call'
       }
       {
         'include': '#constants'
@@ -453,5 +451,18 @@
             'name': 'punctuation.definition.variable.puppet'
         'match': '(\\$\\{)(?:[a-zA-Zx7f-xff\\$]|::)(?:[a-zA-Z0-9_x7f-xff\\$]|::)*(\\})'
         'name': 'variable.other.readwrite.global.puppet'
+      }
+    ]
+  'function_call':
+    'begin': '([a-zA-Z_][a-zA-Z0-9_]*)(\\()'
+    'end': '\\)'
+    'name': 'meta.function-call.puppet'
+    'patterns': [
+      {
+        'include': '#parameter-default-types'
+      }
+      {
+        'match': ','
+        'name': 'punctuation.separator.parameters.puppet'
       }
     ]
