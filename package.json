@@ -2,7 +2,7 @@
   "version": "0.22.0",
   "name": "language-puppet",
   "description": "Puppet language support in Atom",
-  "license": "MIT",
+  "license": "GPL2",
   "engines": {
     "atom": "*",
     "node": "*"
