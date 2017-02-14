@@ -1,11 +1,12 @@
 {
-  "name": "language-puppet",
   "version": "0.22.0",
+  "name": "language-puppet",
+  "description": "Puppet language support in Atom",
+  "license": "GPL-2.0",
   "engines": {
     "atom": "*",
     "node": "*"
   },
-  "description": "Puppet language support in Atom",
   "homepage": "http://atom.github.io/language-puppet",
   "repository": {
     "type": "git",
