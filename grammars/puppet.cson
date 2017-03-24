@@ -233,6 +233,39 @@
         'include': '#variable'
       }
     ]
+  'plain-heredoc':
+    'begin': '(@\\(([^ ()/:\\n\\r]+)(/[nrts$uL]*)?\\))'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.definition.string.begin.puppet'
+    'end': '^((\\s*\\|\\s*)?(\\s*-\\s*)?(\\2)$)'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.definition.string.end.puppet'
+    'name': 'string.quoted.single.puppet'
+    'patterns': [
+      {
+        'include': '#escaped_char'
+      }
+    ]
+  'double-quoted-heredoc':
+    'begin': '(@\\("([^ ()/:\\n\\r]+)"(/[nrts$uL]*)?\\))'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.definition.string.begin.puppet'
+    'end': '^((\\s*\\|\\s*)?(\\s*-\\s*)?(\\2)$)'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.definition.string.end.puppet'
+    'name': 'string.quoted.double.puppet'
+    'patterns': [
+      {
+        'include': '#escaped_char'
+      }
+      {
+        'include': '#variable'
+      }
+    ]
   'escaped_char':
     'match': '\\\\.'
     'name': 'constant.character.escape.puppet'
@@ -427,6 +460,12 @@
     ]
   'strings':
     'patterns': [
+      {
+        'include': '#double-quoted-heredoc'
+      }
+      {
+        'include': '#plain-heredoc'
+      }
       {
         'include': '#double-quoted-string'
       }
