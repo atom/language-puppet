@@ -107,7 +107,7 @@
     ]
   }
   {
-    'begin': '^\\s*(define)\\s+([a-zA-Z0-9_:]+)\\s*(\\()'
+    'begin': '^\\s*(define|function)\\s+([a-zA-Z0-9_:]+)\\s*(\\()'
     'beginCaptures':
       '1':
         'name': 'storage.type.function.puppet'
