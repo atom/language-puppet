@@ -18,6 +18,23 @@
     'name': 'comment.block.puppet'
   }
   {
+    'begin': '@\\(([^:,^\\\,^\\(,^\\),^\\r,^\\n,^"]*)(/[\\$,t,s,r,n,u,L]*)?\\)$'
+    'end': '^(\\s*\\|)?(\\s*-\\s*)?\\s*(\\1)\\s*$'
+    'name': 'heredoc.block.puppet'
+  }
+  {
+    'begin': '@\\("([^:,^\\\,^\\(,^\\),^\\r,^\\n,^"]*)"(/[\\$,t,s,r,n,u,L]*)?\\)$'
+    'patterns':
+      [
+        {
+          'match': '(?<!\\\\)\\$(\\{?)[a-z,_][A-Z,a-z,0-9,_]*(\\}?)'
+          'name': 'variable.heredoc_interpolation.block.puppet'
+        }
+      ]
+    'end': '^(\\s*\\|)?(\\s*-\\s*)?\\s*(\\1)\\s*$'
+    'name': 'heredoc_interpolation.block.puppet'
+  }
+  {
     'begin': '^\\s*(node|class)\\s+((?:[-_A-Za-z0-9"\'.]+::)*[-_A-Za-z0-9"\'.]+)\\s*'
     'captures':
       '1':
