@@ -1,6 +1,5 @@
 # Puppet language support in Atom
-[![macOS Build Status](https://travis-ci.org/atom/language-puppet.svg?branch=master)](https://travis-ci.org/atom/language-puppet)
-[![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/atom/language-puppet?svg=true)](https://ci.appveyor.com/project/Atom/language-puppet/branch/master)
+![CI Status](https://github.com/atom/language-puppet/actions/workflows/main.yml/badge.svg)
 [![Dependency Status](https://david-dm.org/atom/language-puppet.svg)](https://david-dm.org/atom/language-puppet)
 
 Add syntax highlighting and snippets to Puppet files in Atom.
