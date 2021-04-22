@@ -97,3 +97,12 @@ describe "Puppet grammar", ->
 
       {tokens} = grammar.tokenizeLine("package {'foo':}")
       expect(tokens[0]).toEqual value: 'package', scopes: ['source.puppet', 'meta.definition.resource.puppet', 'storage.type.puppet']
+
+  describe "heredocs", ->
+    it "tokenizes plain heredocs as single-quoted strings", ->
+      {tokens} = grammar.tokenizeLine("@(HEREDOC)")
+      expect(tokens[0]).toEqual value: '@(HEREDOC)', scopes: ['source.puppet', 'string.quoted.single.puppet', 'punctuation.definition.string.begin.puppet']
+
+    it "tokenizes double-quoted heredocs as double-quoted strings", ->
+      {tokens} = grammar.tokenizeLine('@("HEREDOC")')
+      expect(tokens[0]).toEqual value: '@("HEREDOC")', scopes: ['source.puppet', 'string.quoted.double.puppet', 'punctuation.definition.string.begin.puppet']
