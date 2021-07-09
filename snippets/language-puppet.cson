@@ -23,6 +23,9 @@
   'file':
     'prefix': 'file'
     'body': 'file { \'${1:name}\':\n\tensure => ${2:file},\n\tmode => \'${3:0644}\',\n}$0'
+  'template':
+    'prefix': 'template'
+    'body': 'template(\'modulename/path/file.erb\'),$0'
   'group':
     'prefix': 'group'
     'body': 'group { \'${1:name}\':\n\tgid => ${2:1},\n}$0'
