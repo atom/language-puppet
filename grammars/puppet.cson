@@ -156,7 +156,9 @@
         'name': 'storage.type.puppet'
       '2':
         'name': 'entity.name.section.puppet'
-    'match': '^\\s*(\\w+)\\s*{\\s*([\'"].+[\'"]):'
+      '3':
+        'name': 'entity.name.section.puppet'
+    'match': '^\\s*(\\w+)\\s*{\\s*([\'"].+[\'"]*)(\\s*:)'
     'name': 'meta.definition.resource.puppet'
   }
   {
